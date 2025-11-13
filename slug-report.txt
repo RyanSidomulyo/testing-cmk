@@ -1,0 +1,14 @@
+🧾 SLUG URL REPORT (12/11/2025, 10.49.14)
+
+
+#1 📎 https://staging.intra.frankandcojewellery.com/selections/harga-berlian-frank-co23 ... ✅ OK
+
+#2 📎 https://staging.intra.frankandcojewellery.com/selections/harga-berlian-frank-co23 ... ✅ OK
+
+#3 📎 https://staging.intra.frankandcojewellery.com/selections/regression-fc ... ❌ BROKEN
+
+#4 📎 https://staging.intra.frankandcojewellery.com/selections/harga-berlian-frank-co ... ✅ OK
+
+#5 📎 https://staging.intra.frankandcojewellery.com/selections/diamond-rings ... ✅ OK
+
+✅ Completed at 12/11/2025, 10.49.35

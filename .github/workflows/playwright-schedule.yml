@@ -1,41 +1,41 @@
-name: 🧪 Playwright DMS Slug Test (Scheduled)
+name: Playwright DMS Test (Auto Run)
 
 on:
   schedule:
-    - cron: "0 */3 * * *" # Jalankan tiap 3 jam
-  workflow_dispatch: # Bisa dijalankan manual juga
+    - cron: "0 */3 * * *" # setiap 3 jam sekali
+  workflow_dispatch:
 
 jobs:
-  playwright-test:
+  test:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
 
     steps:
-      - name: 📦 Checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: 🟢 Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18
 
-      - name: 🧰 Install dependencies
-        run: npm install
+      - name: Install dependencies
+        run: npm ci
 
-      - name: 🧱 Install Playwright browsers
+      - name: Fix Playwright permission (important)
+        run: chmod +x node_modules/.bin/playwright
+
+      - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: 🧩 Run Playwright tests
+      - name: Run Playwright tests
         env:
           DMS_USERNAME: ${{ secrets.DMS_USERNAME }}
           DMS_PASSWORD: ${{ secrets.DMS_PASSWORD }}
-        run: |
-          echo "🔐 Running scheduled Playwright test..."
-          npx playwright test --reporter=list
+        run: npx playwright test
 
-      - name: 📁 Upload reports (screenshots, text logs)
+      - name: Upload test reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-reports
+          name: playwright-results
           path: reports/

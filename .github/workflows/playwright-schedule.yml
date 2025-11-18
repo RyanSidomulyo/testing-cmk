@@ -7,11 +7,15 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Add custom hosts
+        run: |
+          echo "123.45.67.89   api.example.com" | sudo tee -a /etc/hosts
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
